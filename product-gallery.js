@@ -1,6 +1,6 @@
 (function(){
   var photoGroups={
-    a:['a__3.png','a_1.png','a__4.png','a.png'],
+    a:['a__3.webp','a_1.png','a__4.png','a.png'],
     b:['b.png','b_1.png','b__2.png','b__3.png','b__5.png'],
     c:['c.png','c_1.png','c__2.png','c__3.png'],
     d:['d.png','d_1.png','d__2.png','d__3.png'],
