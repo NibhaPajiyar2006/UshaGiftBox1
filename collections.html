@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All Gift Box Designs | Usha Gift House</title>
+<meta name="description" content="Explore all dry fruit gift boxes, festive hampers and premium gift designs from Usha Gift House.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.catalog-header{background:var(--deep);color:var(--cream);padding:20px 0}
+.catalog-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.catalog-brand{font-family:var(--serif);font-size:30px;line-height:1}
+.catalog-brand small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.25em;margin-top:5px}
+.catalog-actions{display:flex;align-items:center;gap:22px}
+.catalog-back{font-size:14px}
+.catalog-intro{padding-block:clamp(56px,8vw,100px) 38px}
+.catalog-intro h1{max-width:850px;font-size:clamp(42px,6vw,76px)}
+.catalog-intro p{margin-top:16px;color:var(--muted);font-size:16px}
+.catalog-count{border-top:1px dashed var(--line);padding-top:18px;margin-bottom:34px;color:var(--muted);font-size:14px}
+.catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:42px 22px;padding-bottom:100px}
+.catalog-grid .gcard{min-width:0;flex:none}
+.catalog-grid .gimg{aspect-ratio:4/4.5}
+.catalog-grid .ginfo{gap:10px;padding-top:16px}
+.catalog-grid .ginfo h3{font-size:24px;line-height:1.12}
+.catalog-grid .ginfo p{font-size:14px;line-height:1.45}
+.catalog-grid .wa{gap:6px}
+.catalog-grid .wa a{width:34px;height:34px}
+.catalog-footer{background:var(--brown);color:var(--cream);padding:24px 0;font-size:14px}
+.catalog-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:1050px){.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 14px}.catalog-grid .ginfo{display:block}.catalog-grid .wa{margin-top:12px}.catalog-intro{padding-bottom:28px}}
+@media(max-width:430px){.catalog-grid{grid-template-columns:1fr}.catalog-grid .ginfo{display:flex}.catalog-grid .wa{margin-top:4px}.catalog-actions .btn{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="arrow" viewBox="0 0 16 16"><path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<header class="catalog-header">
+  <div class="wrap">
+    <a class="catalog-brand" href="index.html" aria-label="Usha Gift House home">Usha<small>GIFT HOUSE</small></a>
+    <div class="catalog-actions">
+      <a class="catalog-back" href="index.html#collections">Back to home</a>
+      <a class="btn btn-light" data-wa href="#">Order on WhatsApp <span class="ic"><svg><use href="#arrow"/></svg></span></a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="wrap catalog-intro">
+    <span class="eyebrow">The full collection</span>
+    <h1>Find a gift for every <em>celebration.</em></h1>
+    <p>Explore our complete range of handcrafted gift boxes and hampers.</p>
+  </section>
+  <section class="wrap" aria-label="All gift box designs">
+    <p class="catalog-count" id="catalogCount" aria-live="polite"></p>
+    <div class="catalog-grid" id="catalogGrid"></div>
+  </section>
+</main>
+<footer class="catalog-footer"><div class="wrap"><span>© 2026 Usha Gift House</span><a href="index.html">Return to home</a></div></footer>
+<script>
+(function(){
+  var products=[
+    ['Peacock Lotus Cover','a.png','Octagon box · Gold foil finish','2,000','2,200','Bestseller','a'],
+    ['Blue Palace Satin Hamper','b.png','4 tins + Ferrero Rocher · Satin lining','2,500','2,700','Premium','b'],
+    ['Peacock Palace Set','c.png','Gift box with matching carry bag','1,800','2,200','','c'],
+    ['Elephant Palace Trunk','d.png','Latch-lock trunk lid','1,200','1,400','Luxury','d'],
+    ['Palace Trunk Lid','e.png','Elephant & palace artwork','1,200','1,400','','e'],
+    ['Blue Mandala Cover','f.png','Gold foil mandala print','1,200','1,400','','f'],
+    ['Blue Mandala Box','g.png','4 compartments · Dry fruit assortment','1,000','1,200','New','g'],
+    ['Rose Lily Dry Fruit Box','h.png','6 compartments · Premium mix','1,000','1,200','Bestseller','h'],
+    ['Rose Lily Carry Box','i.png','Cover with gold rope handle','1,300','1,600','','i'],
+    ['Rose Lily Box Cover','j.png','Embossed floral finish','1,200','1,400','','j'],
+    ['Rose Lily Open Box','k.png','6 compartments · Lid-up display','1,000','1,200','','k'],
+    ['Rose Lily Box with Lid','l.png','6 compartments · Nuts, raisins & more','1,000','1,200','','l'],
+    ['Peacock Tree Hamper Set','m.png','Box + carry bag · 6 compartments','1,000','1,200','Set','m']
+  ];
+  var grid=document.getElementById('catalogGrid');
+  var count=document.getElementById('catalogCount');
+  var orderNumber='919152919136';
+  document.getElementById('catalogCount').textContent=products.length+' gift box designs';
+  products.forEach(function(product){
+    var card=document.createElement('article');
+    card.className='gcard';
+    if(product[6])card.dataset.viewGroup=product[6];
+    var imageBox=document.createElement('div');
+    imageBox.className='gimg';
+    if(product[5]){
+      var badge=document.createElement('span');
+      badge.className='gbadge';
+      badge.textContent=product[5];
+      imageBox.appendChild(badge);
+    }
+    if(product[1]){
+      var image=document.createElement('img');
+      image.src='images/'+product[1];
+      image.alt=product[0]+' — '+product[2];
+      image.loading='lazy';
+      imageBox.appendChild(image);
+    }
+    var info=document.createElement('div');
+    info.className='ginfo';
+    var details=document.createElement('div');
+    var title=document.createElement('h3');
+    title.textContent=product[0];
+    var description=document.createElement('p');
+    description.textContent=product[2];
+    var price=document.createElement('div');
+    price.className='gprice';
+    price.textContent='₹ '+product[3]+'  ';
+    var oldPrice=document.createElement('s');
+    oldPrice.textContent='₹ '+product[4];
+    price.appendChild(oldPrice);
+    details.append(title,description,price);
+    var order=document.createElement('a');
+    order.className='btn btn-dark catalog-order';
+    order.textContent='Enquire';
+    order.href='https://wa.me/'+orderNumber+'?text='+encodeURIComponent('Hello Usha Gift House, I am interested in: '+product[0]);
+    order.target='_blank';
+    order.rel='noopener';
+    info.append(details,order);
+    card.append(imageBox,info);
+    grid.appendChild(card);
+  });
+  var generalOrder=document.querySelector('[data-wa]');
+  generalOrder.href='https://wa.me/'+orderNumber+'?text='+encodeURIComponent('Hello Usha Gift House, I would like to order a gift box.');
+  generalOrder.target='_blank';
+  generalOrder.rel='noopener';
+})();
+</script>
+<script src="product-gallery.js" defer></script>
+</body>
+</html>
