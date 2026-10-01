@@ -45,12 +45,19 @@
 
   // Product cards reveal details on hover, focus, or tap.
   var cards=[].slice.call(document.querySelectorAll('#cards .collection-product'));
+  function activateCard(card){
+    cards.forEach(function(c){c.classList.toggle('on',c===card)});
+  }
   cards.forEach(function(c){
+    c.addEventListener('mouseenter',function(){
+      if(matchMedia('(hover:hover)').matches)activateCard(c);
+    });
+    c.addEventListener('focusin',function(){activateCard(c)});
     c.addEventListener('click',function(){
       if(!matchMedia('(hover:none)').matches)return;
       var open=c.classList.contains('on');
       cards.forEach(function(x){x.classList.remove('on')});
-      c.classList.toggle('on',!open);
+      if(!open)c.classList.add('on');
     });
   });
   document.addEventListener('click',function(e){
