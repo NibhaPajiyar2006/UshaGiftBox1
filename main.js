@@ -9,6 +9,31 @@
   document.querySelectorAll('[data-wa]').forEach(function(a){a.href=waUrl();a.target='_blank';a.rel='noopener'});
   document.querySelectorAll('[data-wa-item]').forEach(function(a){a.href=waUrl('Hello Usha Gift House, I am interested in: '+a.dataset.waItem);a.target='_blank';a.rel='noopener'});
 
+  var featuredBadges={
+    'Peacock Lotus Cover':'Bestseller',
+    'Blue Palace Satin Hamper':'Premium',
+    'Peacock Palace Set':'Luxury',
+    'Palace Trunk Lid':'Top Pick',
+    'Rose Lily Dry Fruit Box':'Bestseller',
+    'Rose Lily Box with Lid':'Bestseller'
+  };
+  document.querySelectorAll('#cards .collection-product').forEach(function(card){
+    var title=card.querySelector('h3');
+    if(!title||!featuredBadges[title.textContent.trim()])card.remove();
+  });
+  document.querySelectorAll('#rail .gcard').forEach(function(card){
+    var title=card.querySelector('h3');
+    var label=title&&featuredBadges[title.textContent.trim()];
+    if(!label){card.remove();return;}
+    var imageBox=card.querySelector('.gimg');
+    var badge=imageBox.querySelector('.gbadge');
+    if(badge)badge.remove();
+    badge=document.createElement('span');
+    badge.className='gbadge';
+    badge.textContent=label;
+    imageBox.insertBefore(badge,imageBox.firstChild);
+  });
+
   // Keep the call-to-action and opening-hours ticker before FAQ and testimonials.
   var pageMain=document.querySelector('main');
   var finalCta=document.querySelector('.fcta');
